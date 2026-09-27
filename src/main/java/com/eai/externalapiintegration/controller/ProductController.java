@@ -1,5 +1,6 @@
 package com.eai.externalapiintegration.controller;
 
+import com.eai.externalapiintegration.dto.ProductResponse;
 import com.eai.externalapiintegration.service.SupplierService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/api/products/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getProduct(@PathVariable("id") long productId) {
+    public ProductResponse getProduct(@PathVariable("id") long productId) {
         return supplierService.getProduct(productId);
     }
 }

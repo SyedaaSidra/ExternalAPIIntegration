@@ -1,5 +1,6 @@
 package com.eai.externalapiintegration.service;
 
+import com.eai.externalapiintegration.dto.ProductResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -12,11 +13,11 @@ public class SupplierService {
         this.supplierRestClient = supplierRestClient;
     }
 
-    public String getProduct(long productId) {
+    public ProductResponse getProduct(long productId) {
         System.out.println(supplierRestClient.get());
         return supplierRestClient.get()
                 .uri("/products/{id}", productId)
                 .retrieve()
-                .body(String.class);
+                .body(ProductResponse.class);
     }
 }
